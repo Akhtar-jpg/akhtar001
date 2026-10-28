@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistem Komunikasi Seluler Menuju Era 6G</title>
+<style>
+:root{--bg:#f4f7fc;--card:#fff;--tx:#14213d;--mu:#55637d;--pri:#0b2a6f;--br:#1e6bff;--ac:#7c3aed;--bd:#d6deec;--soft:#e8efff;--ok:#0f8a4b;--no:#c62839}
+[data-theme=dark]{--bg:#070d1f;--card:#0e1834;--tx:#e8eeff;--mu:#9fb0d3;--pri:#8fb4ff;--br:#4d8dff;--ac:#a78bfa;--bd:#22325c;--soft:#13214a;--ok:#4ade80;--no:#ff7b88}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font:16px/1.7 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+a{color:var(--br)}
+header.top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:.6rem;padding:.5rem 1rem}
+header.top b{color:var(--pri);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--br),var(--ac));z-index:30}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--br);background:var(--br);color:#fff;padding:.5rem 1rem;border-radius:8px;text-decoration:none;display:inline-block}
+button.ghost{background:transparent;color:var(--br)}
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hero{background:linear-gradient(135deg,#061a4a,#0b2a6f 55%,#4c2a9e);color:#fff;padding:3rem 1rem 2rem}
+.wrap{max-width:1040px;margin:auto;padding:0 1rem}
+.hero .wrap{display:grid;gap:2rem;grid-template-columns:1.1fr .9fr;align-items:center}
+.hero h1{font-size:clamp(1.9rem,5vw,3.2rem);line-height:1.12;margin:0 0 .6rem;letter-spacing:-.02em}
+.hero p{color:#d5def8}
+.hero .btn{background:#fff;color:#0b2a6f;font-weight:700;border-color:#fff}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:2rem;max-width:1180px;margin:auto;padding:1.5rem 1rem}
+nav.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;font-size:.9rem}
+nav.toc a{display:block;padding:.25rem .6rem;border-left:3px solid var(--bd);text-decoration:none;color:var(--mu)}
+nav.toc a.act{border-color:var(--ac);color:var(--tx);font-weight:600}
+nav.toc a.read::after{content:" \2713";color:var(--ok)}
+section{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.4rem}
+h2{color:var(--pri);margin-top:0;font-size:1.6rem}h3{margin:1.2rem 0 .3rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin:1rem 0}
+.k{background:var(--soft);border-left:4px solid var(--ac);border-radius:8px;padding:.7rem .9rem}
+.k b{display:block;font-size:1.5rem;color:var(--pri)}.k span{color:var(--mu);font-size:.88rem}
+.tw{overflow-x:auto;margin:1rem 0}table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem}
+th,td{border:1px solid var(--bd);padding:.5rem .6rem;text-align:left;vertical-align:top}th{background:var(--soft);color:var(--pri)}
+.eq{background:var(--soft);border-radius:8px;padding:.7rem 1rem;font:1.1rem Cambria,"Times New Roman",serif;text-align:center;overflow-x:auto}
+.tag{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;margin-right:.3rem;color:#fff}
+.t-f{background:#0f8a4b}.t-t{background:#b7791f}.t-a{background:#7c3aed}
+.note{border:1px dashed var(--ac);border-radius:8px;padding:.6rem .9rem;margin:1rem 0;background:var(--soft)}
+details{border:1px solid var(--bd);border-radius:8px;padding:.5rem .9rem;margin:.8rem 0}summary{cursor:pointer;font-weight:600;color:var(--br)}
+ol.flow{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem;align-items:stretch}
+ol.flow li{flex:1 1 120px;background:var(--soft);border:1px solid var(--br);border-radius:10px;padding:.6rem;text-align:center;font-size:.9rem;position:relative}
+ol.flow li+li::before{content:"\2192";position:absolute;left:-.62rem;top:50%;transform:translateY(-50%);color:var(--ac);font-weight:700}
+svg{max-width:100%;height:auto}.lab{fill:var(--tx);font-size:13px}
+.q{border:1px solid var(--bd);border-radius:10px;padding:.8rem 1rem;margin:.8rem 0}
+.q label{display:block;padding:.25rem .4rem;border-radius:6px;cursor:pointer}
+.q.ok{border-color:var(--ok)}.q.no{border-color:var(--no)}.fb{margin-top:.4rem;font-size:.92rem}
+.calc input{width:7.5rem;padding:.3rem;border-radius:6px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+#up{position:fixed;right:1rem;bottom:1rem;display:none;border-radius:50%;width:44px;height:44px;padding:0;z-index:25}
+footer{text-align:center;color:var(--mu);padding:1.5rem}
+@media(max-width:860px){.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;border:1px solid var(--bd);border-radius:10px;padding:.5rem;background:var(--card)}.hero .wrap{grid-template-columns:1fr}ol.flow li+li::before{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header class="top"><b>Komunikasi Seluler menuju 6G</b><button class="ghost" id="theme" aria-label="Ganti mode terang atau gelap">Mode gelap</button></header>
+
+<div class="hero" id="home"><div class="wrap">
+<div>
+<h1>SISTEM KOMUNIKASI SELULER MENUJU ERA 6G</h1>
+<p><b>Analisis Terobosan Komunikasi Nirkabel 112 Gbps pada Frekuensi 560 GHz Menggunakan Teknologi Photonic Microcomb</b></p>
+<p>Media belajar mandiri untuk mahasiswa D4 Teknik Telekomunikasi. Berita terobosan 6G dari Jepang dipakai sebagai studi kasus untuk menghubungkan teori komunikasi seluler, spektrum terahertz, kapasitas kanal, dan teknologi fotonik.</p>
+<p><b>Tujuan belajar:</b> (1) menjelaskan arsitektur dan konsep dasar sistem seluler; (2) menghitung panjang gelombang dan kapasitas Shannon; (3) membedakan bit rate, bandwidth, dan frekuensi pembawa; (4) menjelaskan peran photonic microcomb; (5) menilai peluang dan tantangan komunikasi THz secara kritis.</p>
+<p><b>Estimasi waktu belajar:</b> sekitar 90 menit (membaca 60 menit, latihan dan kuis 30 menit).</p>
+<a class="btn" href="#bab1">Mulai Belajar</a>
+</div>
+<svg viewBox="0 0 360 260" role="img" aria-label="Ilustrasi konseptual jaringan 6G: menara sel, tautan terahertz, dan perangkat pengguna">
+<defs><radialGradient id="g"><stop offset="0" stop-color="#7c3aed" stop-opacity=".5"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient></defs>
+<circle cx="90" cy="90" r="80" fill="url(#g)"/><circle cx="270" cy="90" r="80" fill="url(#g)"/>
+<g stroke="#8fb4ff" stroke-width="3" fill="none"><path d="M90 150V60M70 150l20-60 20 60M75 110h30"/><path d="M270 150V60M250 150l20-60 20 60M255 110h30"/></g>
+<path d="M100 70Q180 20 260 70" stroke="#fff" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+<text x="180" y="38" fill="#fff" font-size="12" text-anchor="middle">Backhaul THz (konseptual)</text>
+<g fill="#fff"><rect x="40" y="200" width="22" height="36" rx="4"/><rect x="170" y="205" width="22" height="36" rx="4"/><rect x="300" y="200" width="22" height="36" rx="4"/></g>
+<g stroke="#a78bfa" stroke-width="2" stroke-dasharray="3 4"><path d="M85 150L55 200M95 150L178 205M265 150L190 205M275 150L308 200"/></g>
+<text x="180" y="256" fill="#d5def8" font-size="11" text-anchor="middle">Akses nirkabel ke UE (pengguna)</text>
+</svg>
+</div></div>
+
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Daftar isi"><b>Daftar isi</b>
+<a href="#bab1">1. Pendahuluan seluler</a><a href="#bab2">2. Pengenalan 6G</a><a href="#bab3">3. Spektrum terahertz</a><a href="#bab4">4. Studi kasus Jepang</a><a href="#bab5">5. Makna 112 Gbps</a><a href="#bab6">6. Photonic microcomb</a><a href="#bab7">7. 5G vs arah 6G</a><a href="#bab8">8. Tantangan &amp; peluang</a><a href="#bab9">9. Kuis interaktif</a><a href="#bab10">10. Rangkuman</a><a href="#bab11">11. Glosarium</a><a href="#bab12">12. Referensi</a></nav>
+<main>
+<p class="note"><span class="tag t-f">Fakta penelitian</span><span class="tag t-t">Target teknologi</span><span class="tag t-a">Analisis/ilustrasi belajar</span> Label ini dipakai agar Anda dapat membedakan data yang dilaporkan, target pengembangan, dan ilustrasi buatan materi ini.</p>
+
+<section id="bab1"><h2>1. Pendahuluan Sistem Komunikasi Seluler</h2>
+<p><b>Sistem komunikasi seluler</b> adalah sistem komunikasi nirkabel yang membagi wilayah layanan menjadi banyak <i>cell</i>. Setiap cell dilayani satu <i>base station</i>, sehingga frekuensi yang sama dapat dipakai ulang di cell yang berjauhan (<i>frequency reuse</i>) dan pengguna dapat berpindah antar cell tanpa putus (<i>handover</i>).</p>
+<p><b>Prinsip dasar nirkabel:</b> informasi (bit) dipetakan ke sinyal listrik melalui <i>modulasi</i>, digeser ke <i>frekuensi pembawa</i> (<i>carrier</i>), dipancarkan oleh antena sebagai gelombang elektromagnetik, melewati kanal (mengalami redaman, pantulan, derau), lalu diterima, didemodulasi, dan di-decode menjadi bit.</p>
+<h3>Komponen utama</h3>
+<ul><li><b>User Equipment (UE):</b> perangkat pengguna, misalnya ponsel.</li><li><b>Base Station:</b> memancar dan menerima sinyal radio pada cell-nya (gNodeB pada 5G).</li><li><b>Core Network:</b> mengelola autentikasi, mobilitas, sesi data, dan koneksi ke internet.</li></ul>
+<ol class="flow"><li>Informasi (bit)</li><li>Pengkodean &amp; modulasi</li><li>Frekuensi pembawa &amp; antena</li><li>Kanal radio</li><li>Antena &amp; demodulasi</li><li>Bit diterima</li></ol>
+<h3>Konsep kunci</h3>
+<p><b>Frekuensi pembawa</b> (Hz) menentukan lokasi sinyal di spektrum. <b>Bandwidth</b> (Hz) adalah lebar spektrum yang dipakai. <b>Modulasi</b> menentukan jumlah bit per simbol. <b>Kapasitas kanal</b> (bit/s) adalah batas laju informasi yang dapat dikirim dengan andal pada kanal tertentu.</p>
+<h3>Perkembangan generasi</h3>
+<div class="tw"><table><tr><th>Generasi</th><th>Karakteristik</th><th>Teknologi utama</th><th>Layanan khas</th></tr>
+<tr><td>1G</td><td>Analog</td><td>FDMA (misalnya AMPS)</td><td>Suara</td></tr>
+<tr><td>2G</td><td>Digital</td><td>TDMA/GSM, CDMA</td><td>Suara digital, SMS, data dasar</td></tr>
+<tr><td>3G</td><td>Data paket</td><td>WCDMA, HSPA</td><td>Internet seluler, video call</td></tr>
+<tr><td>4G</td><td>Berbasis IP penuh</td><td>LTE/LTE-Advanced, OFDMA, MIMO</td><td>Video streaming, aplikasi mobile</td></tr>
+<tr><td>5G</td><td>Fleksibel, beberapa pita (sub-6 GHz dan mmWave)</td><td>5G NR, massive MIMO, beamforming</td><td>eMBB, URLLC, mMTC</td></tr>
+<tr><td>6G (arah pengembangan)</td><td>Belum standar final</td><td>Riset: THz, AI-native, sensing terintegrasi</td><td>Target; belum layanan komersial</td></tr></table></div>
+<p>Kecepatan setiap generasi sangat bergantung pada pita frekuensi, bandwidth, konfigurasi antena, dan kondisi jaringan, sehingga tidak ada satu angka universal yang tepat untuk satu generasi. Untuk pendalaman konsep, lihat ShareTechnote (Bab 12).</p></section>
+
+<section id="bab2"><h2>2. Pengenalan Teknologi 6G</h2>
+<p><b>6G</b> adalah sebutan untuk generasi seluler berikutnya setelah 5G. Di tingkat ITU, kerangka kerjanya dikenal sebagai <i>IMT-2030</i>. <span class="tag t-t">Target</span>Tujuannya antara lain kapasitas dan efisiensi yang lebih tinggi, latensi lebih rendah, kecerdasan buatan yang terintegrasi, <i>sensing</i> (jaringan juga dapat mendeteksi lingkungan), dan cakupan yang lebih luas.</p>
+<p>Beda umum dengan 5G: 6G diarahkan tidak hanya memperbesar kecepatan, tetapi menambah kemampuan baru (sensing, AI, cakupan terpadu). Salah satu kandidat sumber kapasitas adalah pita frekuensi lebih tinggi hingga terahertz.</p>
+<div class="tw"><table><tr><th>Kategori</th><th>Contoh pada materi ini</th></tr><tr><td><span class="tag t-f">Didemonstrasikan di riset</span></td><td>Transmisi 112 Gbps pada 560 GHz di laboratorium</td></tr><tr><td><span class="tag t-t">Target teknologi</span></td><td>Latensi sangat rendah, integrasi AI, sensing</td></tr><tr><td><span class="tag t-a">Masih dikembangkan</span></td><td>Standar final 6G dan layanan komersialnya</td></tr></table></div>
+<p><b>Peluang:</b> kapasitas sangat tinggi, tautan backhaul tanpa fiber, aplikasi baru. <b>Tantangan:</b> redaman tinggi, biaya, konsumsi daya, standardisasi, dan alokasi spektrum.</p></section>
+
+<section id="bab3"><h2>3. Spektrum Frekuensi Terahertz</h2>
+<p><b>Terahertz (THz)</b> secara umum merujuk pada rentang sekitar 0,1 sampai 10 THz (batas definisi bervariasi antar sumber). Pada konteks komunikasi 6G, istilah "sub-THz" dan "THz" sering dipakai untuk frekuensi di atas sekitar 100 GHz.</p>
+<div class="eq">c = f × λ &nbsp;&nbsp;⇒&nbsp;&nbsp; λ = c / f</div>
+<p>c = kecepatan rambat gelombang elektromagnetik di ruang hampa (m/s, ≈ 2,998 × 10⁸); f = frekuensi (Hz); λ = panjang gelombang (m).</p>
+<h3>Contoh perhitungan: λ pada 560 GHz</h3>
+<ol><li>Rumus: λ = c / f</li><li>Konversi: 560 GHz = 560 × 10⁹ Hz = 5,6 × 10¹¹ Hz</li><li>Substitusi: λ = (2,998 × 10⁸ m/s) / (5,6 × 10¹¹ Hz)</li><li>Hasil: λ ≈ 5,35 × 10⁻⁴ m ≈ <b>0,535 mm</b> (sekitar 535 µm)</li></ol>
+<div class="cards"><div class="k"><b>560 GHz</b><span>Frekuensi pembawa studi kasus</span></div><div class="k"><b>≈ 0,535 mm</b><span>Panjang gelombang (hasil hitung)</span></div><div class="k"><b>112 Gbps</b><span>Laju data yang dilaporkan</span></div></div>
+<div class="calc note"><b>Kalkulator λ:</b> f = <input id="fG" type="number" value="560" min="0.001" step="any"> GHz &nbsp;<button id="bL">Hitung</button> <span id="rL"></span></div>
+<div class="tw"><table><tr><th>Pita (contoh umum)</th><th>Keterangan</th></tr><tr><td>4G LTE</td><td>Sekitar ratusan MHz hingga beberapa GHz (bervariasi per negara)</td></tr><tr><td>5G sub-6 GHz</td><td>Di bawah 6 GHz</td></tr><tr><td>5G mmWave</td><td>Sekitar 24 sampai 52 GHz (FR2)</td></tr><tr><td>Riset 6G</td><td>Termasuk sub-THz/THz di atas 100 GHz, misalnya 560 GHz pada studi kasus</td></tr></table></div>
+<p><b>Keuntungan frekuensi tinggi:</b> spektrum lebar tersedia sehingga bandwidth (dan kapasitas) berpotensi besar, serta antena dapat kecil karena λ kecil sehingga array berelemen banyak mudah dibuat.</p>
+<p><b>Tantangan:</b> redaman ruang bebas bertambah dengan frekuensi, redaman atmosfer (uap air), mudah terhalang material, jangkauan pendek, memerlukan arah antena yang tajam (<i>high-gain beamforming</i>), serta perangkat elektronik yang sulit pada frekuensi tersebut.</p>
+<details><summary>Penjelasan tambahan: mengapa antena bisa kecil tetapi redaman besar?</summary><p>Ukuran elemen antena sebanding dengan λ, sehingga elemen kecil pada frekuensi tinggi. Namun, pada gain antena penerima yang sama luas efektifnya, luas tangkap berkurang dengan kuadrat λ sehingga daya yang tertangkap lebih kecil. Kompensasinya adalah gain antena yang tinggi.</p></details></section>
+
+<section id="bab4"><h2>4. Studi Kasus: Terobosan 6G Terahertz dari Jepang</h2>
+<p><span class="tag t-f">Fakta</span>Menurut pemberitaan, peneliti dari Tokushima University, University of Tokyo, dan Gifu University mendemonstrasikan transmisi nirkabel 112 Gbps pada pita 560 GHz dengan soliton microcomb. Judul makalah yang disebut dalam berita: <i>"Beyond 350 GHz: Single-channel 112 Gbps photonic wireless transmission at 560 GHz using soliton microcombs"</i>, diterbitkan di jurnal <i>Communications Engineering</i>.</p>
+<ul><li><b>Permasalahan:</b> di atas sekitar 350 GHz, sumber elektronik konvensional bermasalah pada <i>phase noise</i>, daya keluaran, dan laju data (dilaporkan hanya beberapa Gbps).</li><li><b>Hasil dilaporkan:</b> 84 Gbps (QPSK) dan 112 Gbps (16QAM) pada pembawa 560 GHz.</li><li><b>Klaim peneliti (menurut berita):</b> pertama kali laju kelas 100 Gbps tercapai di atas 420 GHz.</li><li><b>Peran microcomb:</b> membangkitkan dua sinyal optik yang sangat stabil, lalu dikonversi menjadi gelombang 560 GHz melalui <i>photomixing</i> untuk dipancarkan lewat udara.</li><li><b>Sasaran aplikasi:</b> terutama backhaul seluler; ponsel tidak diharapkan memakai 560 GHz secara langsung.</li></ul>
+<h3>Diagram konseptual (ilustrasi belajar)</h3>
+<ol class="flow"><li>Sumber sinyal fotonik</li><li>Photonic Microcomb</li><li>Pembentukan sinyal frekuensi tinggi</li><li>Pemancar THz</li><li>Kanal nirkabel</li><li>Penerima</li><li>Pemrosesan &amp; pemulihan data</li></ol>
+<p class="note"><span class="tag t-a">Ilustrasi</span>Diagram ini hanya alur konseptual. Susunan perangkat dan tahapan pada eksperimen sebenarnya dapat berbeda dan bukan konfigurasi eksperimen asli. Rinciannya perlu dibaca pada makalah primer.</p>
+<details><summary>Keterbatasan dan makna hasil</summary><p>Makna: tahap penting untuk backhaul THz dan 6G. Keterbatasan: ini demonstrasi laboratorium. Bandwidth kanal, jarak transmisi, daya, dan efisiensi energi tidak saya cantumkan karena tidak saya verifikasi dari sumber primer. Penerapan komersial masih memerlukan pengujian jarak, cuaca, biaya, dan standar. Perkiraan komersialisasi 6G di berita sekitar 2030 atau sesudahnya bersifat proyeksi.</p></details></section>
+
+<section id="bab5"><h2>5. Memahami Kecepatan Transmisi 112 Gbps</h2>
+<p><b>Bit rate</b> (bit/s) adalah jumlah bit yang dikirim per detik. <b>Bandwidth</b> (Hz) adalah lebar pita frekuensi yang dipakai. Keduanya berbeda satuan dan makna, tetapi berhubungan: bit rate ≈ bandwidth × efisiensi spektral (bit/s/Hz). Modulasi orde tinggi (misalnya 16QAM, 4 bit/simbol) menaikkan efisiensi spektral, tetapi menuntut SNR lebih tinggi.</p>
+<p><b>Frekuensi pembawa 560 GHz ≠ bandwidth 560 GHz.</b> Pembawa hanyalah titik pusat; kanal biasanya hanya memakai sebagian kecil di sekitarnya (misalnya beberapa puluh GHz). <b>112 Gbps ≠ kecepatan internet pengguna.</b> Angka itu adalah laju tautan tunggal di laboratorium, sedangkan pengguna berbagi sumber daya, dibatasi jarak, protokol, overhead, dan backhaul.</p>
+<div class="eq">C = B log₂(1 + S/N)</div>
+<p>C = kapasitas kanal teoretis (bit/s); B = bandwidth (Hz); S/N = rasio daya sinyal terhadap derau (linear, bukan dB; S/N = 10^(dB/10)).</p>
+<p>Shannon memberi <b>batas atas teoretis</b> berdasarkan model kanal AWGN. Rumus ini tidak dapat dipakai untuk memastikan sebuah sistem eksperimen mencapai 112 Gbps.</p>
+<h3>Contoh ilustratif (nilai asumsi belajar, <u>bukan</u> parameter eksperimen asli)</h3>
+<ol><li>Asumsi: B = 10 GHz = 10¹⁰ Hz; SNR = 20 dB.</li><li>Konversi: S/N = 10^(20/10) = 100.</li><li>C = 10¹⁰ × log₂(1 + 100) = 10¹⁰ × log₂(101).</li><li>log₂(101) ≈ 6,658, maka C ≈ <b>66,6 Gbps</b>.</li></ol>
+<div class="calc note"><b>Kalkulator Shannon (asumsi bebas):</b> B = <input id="sB" type="number" value="10" min="0" step="any"> GHz; SNR = <input id="sS" type="number" value="20" step="any"> dB &nbsp;<button id="bS">Hitung</button> <span id="rS"></span></div>
+<details><summary>Penjelasan tambahan: hubungan dengan 16QAM</summary><p>Jika 16QAM membawa 4 bit/simbol, laju 112 Gbps pada satu kanal ekuivalen dengan sekitar 28 Gbaud (112 ÷ 4), dengan asumsi tanpa pengkodean tambahan dan tanpa multiplexing polarisasi. Ini perhitungan ilustratif; parameter sebenarnya harus dilihat pada makalah.</p></details></section>
+
+<section id="bab6"><h2>6. Teknologi Photonic Microcomb</h2>
+<p><b>Fotonik</b> adalah teknologi yang membangkitkan, mengolah, dan mendeteksi cahaya; dalam komunikasi, fotonik dipakai misalnya pada serat optik. <b>Optical frequency comb</b> adalah sinyal optik berupa banyak garis frekuensi yang jaraknya teratur (seperti gigi sisir). <b>Photonic microcomb</b> adalah comb yang dibangkitkan dalam <i>microresonator</i> berukuran mikro: laser kontinu dimasukkan ke resonator optik, lalu efek nonlinear membentuk banyak garis frekuensi berjarak sama.</p>
+<svg viewBox="0 0 520 200" role="img" aria-label="Perbandingan satu garis frekuensi dengan sekumpulan garis berjarak teratur">
+<g stroke="var(--tx)" stroke-width="1.5"><path d="M20 90H240M280 90H500"/></g>
+<path d="M130 90V25" stroke="#1e6bff" stroke-width="5"/>
+<g stroke="#7c3aed" stroke-width="4"><path d="M310 90V60M340 90V40M370 90V28M400 90V40M430 90V60"/></g>
+<text class="lab" x="130" y="115" text-anchor="middle">Satu laser: satu frekuensi</text>
+<text class="lab" x="390" y="115" text-anchor="middle">Comb: banyak garis, jarak sama (Δf)</text>
+<path d="M370 138H400" stroke="var(--tx)"/><text class="lab" x="385" y="158" text-anchor="middle">Δf</text>
+<text class="lab" x="260" y="190" text-anchor="middle">Frekuensi →</text></svg>
+<p><b>Analogi:</b> seperti penggaris dengan skala yang sangat rata. Garis-garis comb adalah tanda skala yang jaraknya konstan, sehingga selisih dua garis dapat dijadikan frekuensi acuan yang stabil. Perbedaannya, "penggaris" ini adalah frekuensi cahaya, bukan panjang.</p>
+<p><b>Hubungan dengan THz:</b> jika dua garis optik berselisih frekuensi, misalnya 560 GHz, dan dicampur pada fotodetektor (<i>photomixing</i>), keluarannya berupa sinyal listrik pada frekuensi selisih tersebut. Karena garis comb saling koheren, <i>phase noise</i> sinyal selisih dapat sangat rendah.</p>
+<p><b>Kelebihan:</b> noise fase rendah, potensi miniatur dan integrasi chip. <b>Keterbatasan/tantangan:</b> perlu laser dan kontrol stabil, efisiensi konversi dan daya keluaran THz, biaya, serta integrasi dengan antena dan sistem seluler.</p></section>
+
+<section id="bab7"><h2>7. Perbandingan 5G dan Arah Pengembangan 6G</h2>
+<div class="tw"><table><tr><th>Aspek</th><th>5G (tersedia)</th><th>Arah 6G (target/riset)</th></tr>
+<tr><td>Spektrum</td><td>Sub-6 GHz dan mmWave hingga sekitar 52 GHz</td><td>Pita menengah, mmWave, dan kandidat sub-THz/THz</td></tr>
+<tr><td>Kecepatan data</td><td>Bergantung pita dan konfigurasi</td><td>Target lebih tinggi; angka final belum standar</td></tr>
+<tr><td>Latensi</td><td>Target URLLC sangat rendah</td><td>Target lebih rendah dan lebih andal</td></tr>
+<tr><td>Cakupan</td><td>Makro, small cell</td><td>Terpadu dengan satelit/NTN dan sensing (target)</td></tr>
+<tr><td>Antena</td><td>Massive MIMO, beamforming</td><td>Array lebih besar, beam sangat sempit, kemungkinan RIS</td></tr>
+<tr><td>Pemrosesan sinyal</td><td>OFDM, LDPC/Polar</td><td>Waveform baru, komunikasi dan sensing terpadu (riset)</td></tr>
+<tr><td>Kecerdasan buatan</td><td>Pendukung optimasi</td><td>Diarahkan AI-native</td></tr>
+<tr><td>Tantangan</td><td>Biaya, cakupan mmWave</td><td>Redaman THz, daya, standar, biaya</td></tr></table></div>
+<p class="note">Perbandingan ini bersifat umum. Tidak semua karakteristik 6G sudah menjadi standar final, dan target 6G bukan kemampuan komersial yang tersedia saat ini.</p></section>
+
+<section id="bab8"><h2>8. Tantangan dan Peluang Implementasi 6G</h2>
+<ul><li><b>Redaman propagasi:</b> meningkat pada frekuensi tinggi dan akibat penyerapan atmosfer.</li><li><b>Line-of-sight (LoS):</b> THz sangat bergantung pada jalur pandang; penghalang seperti dinding atau hujan dapat memutus tautan.</li><li><b>Perangkat:</b> pemancar/penerima kompleks, daya keluaran rendah, antena dan rangkaian frekuensi tinggi sulit dibuat.</li><li><b>Daya dan efisiensi energi:</b> bandwidth besar menuntut ADC/DAC dan pemrosesan cepat.</li><li><b>Jaringan:</b> integrasi akses dan backhaul; biaya infrastruktur dan kesiapan industri.</li></ul>
+<p><b>Peluang:</b> backhaul kapasitas tinggi, tautan jarak pendek, pusat data, dan aplikasi masa depan. Kelayakan tiap aplikasi bergantung pada kebutuhan teknis, hasil uji, biaya, dan perkembangan teknologi.</p>
+<details><summary>Penjelasan tambahan: mengapa backhaul menjadi sasaran awal?</summary><p>Backhaul bersifat titik ke titik dan posisi tetap sehingga antena berarah tajam dan LoS lebih mudah dijaga, tidak seperti UE yang bergerak.</p></details></section>
+
+<section id="bab9"><h2>9. Latihan dan Kuis Interaktif</h2>
+<div id="quiz"></div>
+<button id="chk">Periksa Jawaban</button> <button class="ghost" id="rst">Ulangi Kuis</button>
+<p id="score" role="status" style="font-weight:700;font-size:1.1rem"></p></section>
+
+<section id="bab10"><h2>10. Rangkuman Materi</h2>
+<ul><li><b>Sistem seluler:</b> UE, base station, dan core network; wilayah dibagi menjadi cell dan frekuensi dipakai ulang.</li><li><b>Menuju 6G:</b> 6G masih arah pengembangan (IMT-2030) dengan target kapasitas, latensi, AI, dan sensing.</li><li><b>560 GHz:</b> λ ≈ 0,535 mm; spektrum lebar tetapi redaman besar dan LoS dominan.</li><li><b>112 Gbps:</b> bit rate tautan laboratorium; berbeda dari bandwidth dan dari kecepatan pengguna. Batas teoretis: C = B log₂(1 + S/N).</li><li><b>Photonic microcomb:</b> garis frekuensi optik berjarak teratur dan koheren; selisih dua garis menghasilkan sinyal THz ber-noise fase rendah.</li><li><b>Peluang dan tantangan:</b> backhaul dan tautan berkapasitas sangat tinggi, dengan kendala propagasi, daya, biaya, dan standardisasi.</li></ul></section>
+
+<section id="bab11"><h2>11. Glosarium</h2>
+<div class="tw"><table><tr><th>Istilah</th><th>Definisi</th></tr>
+<tr><td>Cellular Communication</td><td>Komunikasi nirkabel dengan wilayah terbagi dalam cell dan pemakaian ulang frekuensi.</td></tr>
+<tr><td>User Equipment</td><td>Perangkat pengguna akhir pada jaringan seluler.</td></tr>
+<tr><td>Base Station</td><td>Stasiun radio yang melayani UE dalam satu cell.</td></tr>
+<tr><td>Bandwidth</td><td>Lebar pita frekuensi (Hz) yang dipakai sinyal.</td></tr>
+<tr><td>Bit Rate</td><td>Jumlah bit yang dikirim per detik (bit/s).</td></tr>
+<tr><td>Spectral Efficiency</td><td>Bit rate per satuan bandwidth (bit/s/Hz).</td></tr>
+<tr><td>Terahertz</td><td>Rentang frekuensi sekitar 0,1–10 THz (definisi bervariasi).</td></tr>
+<tr><td>Wavelength</td><td>Jarak antar dua puncak gelombang; λ = c/f.</td></tr>
+<tr><td>Photonic Microcomb</td><td>Optical frequency comb yang dibangkitkan dalam microresonator berukuran mikro.</td></tr>
+<tr><td>Optical Frequency Comb</td><td>Sinyal optik dengan banyak garis frekuensi berjarak teratur.</td></tr>
+<tr><td>Signal-to-Noise Ratio</td><td>Perbandingan daya sinyal terhadap daya derau.</td></tr>
+<tr><td>Shannon Capacity</td><td>Batas teoretis laju informasi kanal AWGN: C = B log₂(1 + S/N).</td></tr>
+<tr><td>Propagation Loss</td><td>Pelemahan daya sinyal selama merambat.</td></tr>
+<tr><td>Line-of-Sight</td><td>Jalur pandang langsung tanpa penghalang antara pemancar dan penerima.</td></tr>
+<tr><td>6G</td><td>Generasi seluler berikutnya setelah 5G; masih dalam riset dan standardisasi.</td></tr></table></div></section>
+
+<section id="bab12"><h2>12. Referensi</h2>
+<p class="note">Hanya tautan yang benar-benar ditemukan saat penyusunan yang dicantumkan. Tautan makalah primer dan dokumen ITU belum saya verifikasi, sehingga hanya judulnya yang ditulis; cari judul tersebut untuk memastikan sendiri.</p>
+<ol>
+<li>ShareTechnote. Referensi konsep komunikasi seluler. <a href="https://www.sharetechnote.com/index.html" target="_blank" rel="noopener">https://www.sharetechnote.com/index.html</a></li>
+<li><b>Sumber primer (judul dari berita, tautan belum diverifikasi):</b> "Beyond 350 GHz: Single-channel 112 Gbps photonic wireless transmission at 560 GHz using soliton microcombs", Tokushima University dkk., jurnal <i>Communications Engineering</i>, 2026.</li>
+<li>Berita (bukan sumber primer): Tokushima University Achieves 112 Gbps 6G Wireless Transmission at 560 GHz, EverythingRF. <a href="https://www.everythingrf.com/News/details/22413-tokushima-university-achieves-112-gbps-6g-wireless-transmission-at-560-ghz" target="_blank" rel="noopener">tautan</a></li>
+<li>Berita: Researchers hit 112Gbps over wireless in a breakthrough that could shape 6G, TechSpot, 2026. <a href="https://www.techspot.com/news/112461-researchers-achieve-112gbps-wireless-speeds-breakthrough-future-6g.html" target="_blank" rel="noopener">tautan</a></li>
+<li>Berita: Japan hits 6G key milestone with high-frequency speeds topping 100 Gbps, Live Science, 2026. <a href="https://www.livescience.com/technology/communications/japan-hits-6g-key-milestone-with-high-frequency-speeds-topping-100-gbps" target="_blank" rel="noopener">tautan</a></li>
+<li>ITU-R Rekomendasi M.2160, "Framework and overall objectives of the future development of IMT for 2030 and beyond", ITU (tautan: cari di <a href="https://www.itu.int" target="_blank" rel="noopener">itu.int</a>).</li>
+<li>Publikasi ilmiah umum tentang komunikasi terahertz dan soliton microcomb: <b>belum diverifikasi</b>; cari di IEEE Xplore atau Nature dengan kata kunci "terahertz communications survey" dan "soliton microcomb".</li>
+</ol></section>
+</main></div>
+<footer>Materi belajar mandiri. Periksa kembali angka penelitian pada sumber primer.</footer>
+<button id="up" aria-label="Kembali ke atas">↑</button>
+
+<script>
+var $=function(s){return document.querySelector(s)},C=299792458;
+// Tema
+var th=$('#theme');function setT(t){document.documentElement.dataset.theme=t;th.textContent=t=='dark'?'Mode terang':'Mode gelap'}
+setT(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+th.onclick=function(){setT(document.documentElement.dataset.theme=='dark'?'light':'dark')};
+// Progres, back-to-top, bab terbaca
+var secs=[].slice.call(document.querySelectorAll('main section')),links=[].slice.call(document.querySelectorAll('#toc a'));
+function onS(){var h=document.documentElement,p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);$('#bar').style.width=(p*100)+'%';
+$('#up').style.display=h.scrollTop>500?'block':'none';var cur=-1;
+secs.forEach(function(s,i){var r=s.getBoundingClientRect();if(r.top<innerHeight*.4)cur=i;if(r.bottom<innerHeight*.9)links[i].classList.add('read')});
+links.forEach(function(a,i){a.classList.toggle('act',i==cur)})}
+addEventListener('scroll',onS);onS();$('#up').onclick=function(){scrollTo({top:0})};
+// Kalkulator
+$('#bL').onclick=function(){var f=parseFloat($('#fG').value);$('#rL').textContent=f>0?'λ = '+(C/(f*1e9)*1000).toPrecision(4)+' mm':'Masukkan frekuensi > 0'};
+$('#bS').onclick=function(){var b=parseFloat($('#sB').value),d=parseFloat($('#sS').value);if(!(b>0)||isNaN(d)){$('#rS').textContent='Masukkan nilai valid';return}
+var sn=Math.pow(10,d/10);$('#rS').textContent='S/N = '+sn.toPrecision(4)+'; C = '+(b*Math.log2(1+sn)).toPrecision(4)+' Gbps'};
+// Kuis
+var Q=[
+['Komponen yang mengelola autentikasi, mobilitas, dan koneksi ke internet adalah...',['User Equipment','Base Station','Core Network','Antena sektoral'],2,'Core Network menangani autentikasi, mobilitas, dan sesi data.'],
+['Mengapa frekuensi yang sama dapat dipakai ulang pada sistem seluler?',['Karena sinyal tidak pernah saling mengganggu','Karena cell yang berjauhan tidak saling mengganggu secara signifikan','Karena UE mengubah frekuensinya sendiri','Karena core network menghapus interferensi'],1,'Konsep frequency reuse memanfaatkan jarak antar cell.'],
+['Pernyataan yang benar tentang bit rate dan bandwidth:',['Keduanya berarti sama dan memiliki satuan sama','Bit rate dalam bit/s, bandwidth dalam Hz','Bit rate dalam Hz, bandwidth dalam bit/s','Bandwidth selalu sama dengan frekuensi pembawa'],1,'Bit rate = bit/s; bandwidth = lebar pita (Hz).'],
+['Panjang gelombang pada 560 GHz sekitar...',['0,535 mm','5,35 mm','53,5 µm','0,535 m'],0,'λ = c/f = 2,998×10⁸ / 5,6×10¹¹ ≈ 5,35×10⁻⁴ m.'],
+['Peran utama photonic microcomb pada studi kasus adalah...',['Menggantikan antena penerima','Menghasilkan garis frekuensi optik stabil untuk membentuk sinyal THz','Mengubah 560 GHz menjadi 5G sub-6 GHz','Menaikkan SNR kanal secara otomatis'],1,'Dua garis optik stabil di-photomix menjadi sinyal THz dengan noise fase rendah.'],
+['Karakteristik komunikasi terahertz yang benar:',['Redaman kecil dan jangkauan sangat jauh','Spektrum lebar, tetapi redaman besar dan sensitif terhadap penghalang','Tidak memerlukan LoS','Tidak membutuhkan antena berarah'],1,'THz menawarkan bandwidth lebar namun propagasinya menantang.'],
+['Pada C = B log₂(1 + S/N), S/N harus dinyatakan dalam...',['dB','Rasio linear','dBm','Hz'],1,'Konversi dB ke linear: 10^(dB/10).'],
+['Dengan B = 10 GHz dan SNR = 20 dB, kapasitas Shannon ≈...',['20 Gbps','66,6 Gbps','100 Gbps','200 Gbps'],1,'S/N = 100; C = 10¹⁰ × log₂(101) ≈ 66,6 Gbps.'],
+['Mengapa 560 GHz tidak otomatis berarti bandwidth kanal 560 GHz?',['Karena 560 GHz hanya frekuensi pusat pembawa; kanal memakai sebagian lebar pita','Karena bandwidth selalu 1 GHz','Karena THz tidak memiliki bandwidth','Karena bit rate sama dengan bandwidth'],0,'Pembawa menentukan lokasi spektrum, bukan lebar kanal.'],
+['Interpretasi yang tepat atas hasil 112 Gbps:',['Pengguna ponsel sudah memperoleh 112 Gbps','Demonstrasi laboratorium tautan tunggal; belum layanan komersial','6G telah distandarkan final','Shannon membuktikan 112 Gbps pasti tercapai'],1,'Ini hasil riset, bukan kecepatan pengguna dan bukan standar final.']];
+var qs=$('#quiz');qs.innerHTML=Q.map(function(q,i){return '<div class="q" id="q'+i+'"><b>'+(i+1)+'. '+q[0]+'</b>'+q[1].map(function(o,j){return '<label><input type="radio" name="n'+i+'" value="'+j+'"> '+String.fromCharCode(65+j)+'. '+o+'</label>'}).join('')+'<div class="fb"></div></div>'}).join('');
+$('#chk').onclick=function(){var s=0,a=0;Q.forEach(function(q,i){var el=$('#q'+i),c=el.querySelector('input:checked'),fb=el.querySelector('.fb');
+if(c)a++;var ok=c&&+c.value==q[2];if(ok)s++;el.className='q '+(ok?'ok':'no');
+fb.innerHTML=(ok?'<b style="color:var(--ok)">Benar.</b> ':(c?'<b style="color:var(--no)">Salah.</b> ':'<b style="color:var(--no)">Belum dijawab.</b> '))+'Jawaban: '+String.fromCharCode(65+q[2])+'. '+q[3]});
+$('#score').textContent='Skor: '+s+' / '+Q.length+' ('+Math.round(s/Q.length*100)+'%)'};
+$('#rst').onclick=function(){Q.forEach(function(q,i){var el=$('#q'+i);el.className='q';el.querySelector('.fb').innerHTML='';[].forEach.call(el.querySelectorAll('input'),function(x){x.checked=false})});$('#score').textContent='';$('#quiz').scrollIntoView()};
+$('#bL').click();$('#bS').click();
+</script>
+</body>
+</html>
